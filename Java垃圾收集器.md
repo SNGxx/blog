@@ -194,7 +194,7 @@ Java内存运行时区域中，程序计数器、虚拟机栈、本地方法栈3
 
 而Java堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存可能不一样，我们只有在程序处于运行时期才知道会创建哪些对象，这部分内存的分配和回收都是动态的，垃圾收集器所关注的是这部分内存。
 
-![jvm-runtime](src\jvm-runtime.jpg)
+![jvm-runtime](src/jvm-runtime.jpg)
 
 ### 回收堆内存
 
@@ -270,7 +270,7 @@ JDK 1.2之后，Java对引用的概念进行了扩充，将引用分为强引用
 
 > G1收集器在JAVA8甚至JAVA9中都是不建议使用的，这里不对G1收集器进行介绍。
 
-![gc-collector](src\gc-collector.jpg)
+![gc-collector](src/gc-collector.jpg)
 
 ### 新生代垃圾收集器
 
@@ -282,7 +282,7 @@ JDK 1.2之后，Java对引用的概念进行了扩充，将引用分为强引用
 
 下图为Serial配合Serial Old运行示意图。
 
-![serial-collector](src\serial-collector.jpg)
+![serial-collector](src/serial-collector.jpg)
 
 #### ParNew收集器
 
@@ -290,7 +290,7 @@ ParNew收集器其实是Serial收集器的多线程版本，与Serial不同的�
 
 下图为ParNew配合Serial Old运行示意图。
 
-![parnew-collector](src\parnew-collector.jpg)
+![parnew-collector](src/parnew-collector.jpg)
 
 #### Parallel Scavenge收集器
 
@@ -312,7 +312,7 @@ JDK 1.6中提供了Parallel Old收集器，使得Parallel Scavenge可以配合Pa
 
 下图为Parallel Scavenge配合Parallel Old运行示意图。
 
-![parallel-old-collector](src\parallel-old-collector.jpg)
+![parallel-old-collector](src/parallel-old-collector.jpg)
 
 #### CMS收集器
 
@@ -329,13 +329,13 @@ CMS运行过程分为4个步骤：
 
 下图为CMS收集器的运行示意图。
 
-![cms-collector](src\cms-collector.jpg)
+![cms-collector](src/cms-collector.jpg)
 
 ### 垃圾收集器组合
 
 目前，在设定JVM选项的时候，由于不是所有的年轻代收集器和老年代收集器都能配合工作，所以不能分别指定年轻代和老年代的收集器，而是提供了几套可选的组合，如图：
 
-![gc-collector-pair](src\gc-collector-pair.jpg)
+![gc-collector-pair](src/gc-collector-pair.jpg)
 
 > 注：CMS和Serial Old的虚线连接表示，在CMS运行期间预留的内存无法满足程序需要，就会出现一次”Concurrent Mode Failure“失败，这时虚拟机将启动后备预案：临时启用Serial Old收集器来进行老年代的垃圾收集。
 
